@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 
 @Controller
-public class SpaDayController {
+public class SpaDayController{
 
     public boolean checkSkinType(String skinType, String facialType) {
         if (skinType.equals("oily")) {
@@ -63,6 +63,14 @@ public class SpaDayController {
             }
         }
 
+        model.addAttribute("name",name);
+        model.addAttribute("skintype", skintype);
+        model.addAttribute("manipedi", manipedi);
+        model.addAttribute("appropriateFacials",appropriateFacials);
+
+
         return "menu";
     }
+
+
 }
