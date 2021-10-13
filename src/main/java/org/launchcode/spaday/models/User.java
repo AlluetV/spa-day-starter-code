@@ -1,13 +1,25 @@
 package org.launchcode.spaday.models;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class User {
+
+    @NotBlank(message = "Username is required")
+    @Size(min=5, max=15, message="Username should be between 5 and 15 characters")
     private String username;
+
+    @Email(message = "Please provide a valid email")
     private String email;
+
+    @NotBlank(message = "Password is required")
+    @Length(min=5, max=15, message="Username should be at least 6 characters long")
     private String password;
 
-    public User() {
-
-    }
+    public User(){}
 
     public User(String username, String email, String password) {
         this();
@@ -38,5 +50,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
